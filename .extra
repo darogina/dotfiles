@@ -1,0 +1,38 @@
+export PATH="$(brew --prefix)/sbin:$(brew --prefix)/opt/python/libexec/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+git config --global push.default simple
+git config --global status.showUntrackedFiles all
+git config --global core.editor vim
+git config --global core.autocrlf input
+git config --global credential.helper osxkeychain
+git config --global stash.showPatch true
+git config --global rebase.autostash true
+git config --global pull.ff only
+git config --global commit.gpgsign false
+git config --global gpg.program gpg
+
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.br branch
+git config --global alias.type 'cat-file -t'
+git config --global alias.dump 'cat-file -p'
+git config --global alias.rb rebase
+git config --global alias.cp cherry-pick
+#git config --global alias.hist "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+git config --global alias.hist "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global alias.unpushed '!GIT_CURRENT_BRANCH=$(git name-rev --name-only HEAD) && git log origin/$GIT_CURRENT_BRANCH..$GIT_CURRENT_BRANCH --oneline'
+git config --global alias.undo-commit 'reset --soft HEAD^'
+git config --global alias.up '!git fetch --all -tp; git merge --ff-only @{u}; git submodule update --init --recursive'
+git config --global alias.cleanup '!git fetch -p && for branch in $(git branch -vv | awk '\''/: gone]/{if ($1!="*") print $1}'\''); do git branch -D $branch; done;'
+git config --global alias.drift '!GIT_CURRENT_BRANCH=$(git name-rev --name-only HEAD) && git rev-list --left-right --count origin/master...$GIT_CURRENT_BRANCH | awk -v branch="$GIT_CURRENT_BRANCH" -F$"\t" '"'"'{print "origin/master: " $1, " ... ", branch": " $2}'"'"''
+
+alias idea='$IDEA_HOME/idea.sh &'
+alias checkgoogle='ping 8.8.8.8'
+alias fixnetwork='sudo service network-manager restart'
+alias freememory='sudo sysctl -w vm.drop_caches=3 && sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches'
+
+alias dc=docker-compose

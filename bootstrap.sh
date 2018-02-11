@@ -13,6 +13,15 @@ function doIt() {
 		--exclude "LICENSE-MIT.txt" \
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
+
+    # Setup Vundle for VIM
+    if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ] ; then
+        echo "CLONING"
+        git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
+    else
+        git -C "$HOME/.vim/bundle/Vundle.vim" pull
+    fi
+    vim +PluginInstall +qall
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
