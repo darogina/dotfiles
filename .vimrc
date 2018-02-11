@@ -3,10 +3,43 @@ set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+
+" Override vim syntax for yaml files
+"Plugin 'stephpy/vim-yaml'
+
+" Provides insert mode auto-completion for quotes, parens, brackets, etc.
+Plugin 'raimondi/delimitmate'
+
+" basic vim/terraform integration
+Plugin 'hashivim/vim-terraform'
+
+" Better whitespace highlighting for Vim
+Plugin 'ntpeters/vim-better-whitespace'
+
+" Docker
+Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+let g:terraform_fmt_on_save = 1
+let g:terraform_align = 1
+
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
+" set clipboard=unnamed
 " Enhance command-line completion
 set wildmenu
 " Allow cursor keys in insert mode
@@ -41,16 +74,16 @@ set modelines=4
 set exrc
 set secure
 " Enable line numbers
-set number
+" set number
 " Enable syntax highlighting
 syntax on
 " Highlight current line
 set cursorline
 " Make tabs as wide as two spaces
-set tabstop=2
+set tabstop=4
 " Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set list
+" set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+" set list
 " Highlight searches
 set hlsearch
 " Ignore case of searches
@@ -60,7 +93,7 @@ set incsearch
 " Always show status line
 set laststatus=2
 " Enable mouse in all modes
-set mouse=a
+"set mouse=a
 " Disable error bells
 set noerrorbells
 " Don’t reset cursor to start of line when moving around.
@@ -76,12 +109,15 @@ set title
 " Show the (partial) command as it’s being typed
 set showcmd
 " Use relative line numbers
-if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
-endif
+" if exists("&relativenumber")
+" 	set relativenumber
+" 	au BufReadPost * set relativenumber
+" endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
+
+"This unsets the "last search pattern" register by hitting return
+:nnoremap <silent> <CR> :nohlsearch<CR><CR>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
