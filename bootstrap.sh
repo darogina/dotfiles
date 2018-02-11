@@ -22,6 +22,10 @@ function doIt() {
         git -C "$HOME/.vim/bundle/Vundle.vim" pull
     fi
     vim +PluginInstall +qall
+
+    # Setup NVM
+    mkdir -p "$HOME/.nvm"
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
