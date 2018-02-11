@@ -46,6 +46,11 @@ brew install openssh
 brew install screen
 # brew install homebrew/php/php56 --with-gmp
 
+# Install some development tools
+brew install rbenv
+brew cask install docker
+brew install docker-compose
+
 # Install font tools.
 brew tap bramstein/webfonttools
 brew install sfnt2woff
