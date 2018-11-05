@@ -1,3 +1,6 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
 " Use the Solarized Dark theme
 set background=dark
 colorscheme solarized
@@ -33,11 +36,13 @@ Plugin 'ntpeters/vim-better-whitespace'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
+filetype plugin indent on    " required
+
 let g:terraform_fmt_on_save = 1
 let g:terraform_align = 1
 
 " Make Vim more useful
-set nocompatible
+" set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 " set clipboard=unnamed
 " Enhance command-line completion
