@@ -28,7 +28,7 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'ntpeters/vim-better-whitespace'
 
 " Docker
-Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+" Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,7 +80,7 @@ syntax on
 " Highlight current line
 set cursorline
 " Make tabs as wide as two spaces
-set tabstop=4
+set tabstop=2
 " Show “invisible” characters
 " set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 " set list
