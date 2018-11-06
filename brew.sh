@@ -50,6 +50,8 @@ brew install screen
 #brew install rbenv
 brew cask install docker
 #brew install docker-compose
+brew install pyenv
+brew install pipenv
 
 # Install font tools.
 #brew tap bramstein/webfonttools
